@@ -1,65 +1,167 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Leaf, Camera, MapPin, Cloud, FileText, Shield, Users } from "lucide-react";
+
+const features = [
+  {
+    icon: Camera,
+    title: "Etikett scannen",
+    desc: "Fotografieren Sie das Produktetikett — KI erkennt Wirkstoff, Konzentration und Fristen automatisch.",
+  },
+  {
+    icon: MapPin,
+    title: "GPS-Erfassung",
+    desc: "Standort wird automatisch per GPS dokumentiert — kein manuelles Eintragen nötig.",
+  },
+  {
+    icon: Cloud,
+    title: "Wetterdaten",
+    desc: "Temperatur, Luftfeuchtigkeit und Wind werden in Echtzeit zum Protokoll hinzugefügt.",
+  },
+  {
+    icon: FileText,
+    title: "PDF-Protokolle",
+    desc: "Behördentaugliche Dokumentation auf Knopfdruck — prüfungssicher und vollständig.",
+  },
+  {
+    icon: Shield,
+    title: "Compliance",
+    desc: "Wiederbetretungsfristen, Sperrzonen und Auflagen automatisch berechnet und überwacht.",
+  },
+  {
+    icon: Users,
+    title: "Team-Verwaltung",
+    desc: "Techniker, Manager und Inhaber — jeder hat die richtige Rolle und Übersicht.",
+  },
+];
+
+const steps = [
+  { num: "1", title: "Etikett fotografieren", desc: "Kamera öffnen, Produktetikett fotografieren — fertig." },
+  { num: "2", title: "Daten ergänzen", desc: "Menge, Fläche und Zielorganismus eingeben." },
+  { num: "3", title: "Automatisch dokumentiert", desc: "GPS, Wetter und Fristen werden automatisch erfasst." },
+  { num: "4", title: "Unterschreiben & fertig", desc: "Digital unterschreiben — prüfungssicheres Protokoll in Sekunden." },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen">
+      {/* Header */}
+      <header className="border-b bg-white">
+        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2 text-[#1B5E20]">
+            <Leaf className="h-6 w-6" />
+            <span className="text-xl font-bold">ChemComply</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <Link href="/login" className="text-sm font-medium text-gray-600 hover:text-gray-900">
+              Anmelden
+            </Link>
+            <Link
+              href="/register"
+              className="rounded-md bg-[#1B5E20] px-4 py-2 text-sm font-medium text-white hover:bg-[#1B5E20]/90 transition-colors"
+            >
+              Kostenlos testen
+            </Link>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero */}
+      <section className="py-16 md:py-24 bg-gradient-to-b from-white to-[#f8faf8]">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+            Pflanzenschutz-Dokumentation.
+            <br />
+            <span className="text-[#1B5E20]">Digital. Automatisch. Konform.</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+            Etikett scannen, Daten automatisch erfassen, behördentaugliches Protokoll in Sekunden.
+            Schluss mit Papier-Chaos und Excel-Listen.
           </p>
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/register"
+              className="rounded-md bg-[#1B5E20] px-8 py-3 text-base font-medium text-white hover:bg-[#1B5E20]/90 transition-colors"
+            >
+              14 Tage kostenlos testen
+            </Link>
+            <Link
+              href="/pricing"
+              className="rounded-md border border-gray-300 px-8 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+            >
+              Preise ansehen
+            </Link>
+          </div>
+          <p className="mt-4 text-sm text-gray-500">Keine Kreditkarte nötig. PflSchG DE, ChemV CH, EPA US konform.</p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Features */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center">Alles automatisch dokumentiert</h2>
+          <p className="mt-4 text-center text-gray-600 max-w-xl mx-auto">
+            Von der Etikett-Erkennung bis zum fertigen Protokoll — ChemComply automatisiert Ihre gesamte Pflanzenschutz-Dokumentation.
+          </p>
+          <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((f) => (
+              <div key={f.title} className="flex gap-4">
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#e8f5e9] flex items-center justify-center">
+                  <f.icon className="h-5 w-5 text-[#1B5E20]" />
+                </div>
+                <div>
+                  <h3 className="font-semibold">{f.title}</h3>
+                  <p className="mt-1 text-sm text-gray-600">{f.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* How it works */}
+      <section className="py-16 bg-[#f8faf8]">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center">So funktioniert es</h2>
+          <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {steps.map((s) => (
+              <div key={s.num} className="text-center">
+                <div className="w-12 h-12 rounded-full bg-[#1B5E20] text-white flex items-center justify-center text-xl font-bold mx-auto">
+                  {s.num}
+                </div>
+                <h3 className="mt-4 font-semibold">{s.title}</h3>
+                <p className="mt-2 text-sm text-gray-600">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 bg-[#1B5E20] text-white">
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold">Bereit für digitale Compliance?</h2>
+          <p className="mt-4 text-lg text-white/80">
+            Starten Sie heute mit ChemComply und dokumentieren Sie Ihre Pflanzenschutz-Anwendungen effizient und gesetzeskonform.
+          </p>
+          <Link
+            href="/register"
+            className="mt-8 inline-block rounded-md bg-white text-[#1B5E20] px-8 py-3 text-base font-medium hover:bg-white/90 transition-colors"
+          >
+            Jetzt kostenlos starten
+          </Link>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 bg-gray-900 text-gray-400">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <Leaf className="h-5 w-5" />
+            <span className="font-medium text-white">ChemComply</span>
+          </div>
+          <p className="text-sm">&copy; 2026 ChemComply. Alle Rechte vorbehalten.</p>
+        </div>
+      </footer>
     </div>
   );
 }
